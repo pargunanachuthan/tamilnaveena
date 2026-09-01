@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation | Tamilarasan & Navina</title>
+    <meta name="description" content="You are cordially invited to the wedding reception of Tamilarasan & Navina on September 20, 2026">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- GSAP & Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ivory: '#FAF4EA',
+                        blush: '#F9F2EE',
+                        softblush: '#F7DBD2',
+                        maroon: {
+                            DEFAULT: '#8A393B',
+                            light: '#A04E50',
+                            dark: '#6D2D2F',
+                            deep: '#5C2728',
+                        },
+                        antique: '#B09364',
+                        golden: '#ECA809',
+                        olive: '#528F34',
+                        fresh: '#65A73D',
+                        beige: '#E0C9B5',
+                        dusty: '#C8A8A3',
+                    },
+                    fontFamily: {
+                        script: ['Great Vibes', 'cursive'],
+                        serif: ['Playfair Display', 'serif'],
+                        elegant: ['Cormorant Garamond', 'serif'],
+                        sans: ['Lato', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #FAF4EA; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(to bottom, #B09364, #E0C9B5); border-radius: 3px; }
+
+        .particle { position: fixed; pointer-events: none; z-index: 1; opacity: 0; }
+        .petal { position: fixed; pointer-events: none; z-index: 50; background-size: contain; background-repeat: no-repeat; opacity: 0.5; will-change: transform; }
+
+        .text-shadow-maroon { text-shadow: 0 2px 25px rgba(138, 57, 59, 0.3), 0 0 50px rgba(236, 168, 9, 0.1); }
+        .text-glow-maroon {
+            text-shadow:
+                0 0 10px rgba(138, 57, 59, 0.4),
+                0 0 30px rgba(138, 57, 59, 0.25),
+                0 0 60px rgba(138, 57, 59, 0.15),
+                0 2px 4px rgba(92, 39, 40, 0.3);
+        }
+        .text-shadow-gold { text-shadow: 0 2px 20px rgba(236, 168, 9, 0.35), 0 0 40px rgba(176, 147, 100, 0.2); }
+        .glow-gold { filter: drop-shadow(0 0 12px rgba(236, 168, 9, 0.4)) drop-shadow(0 0 30px rgba(176, 147, 100, 0.15)); }
+        .glow-maroon { filter: drop-shadow(0 0 10px rgba(138, 57, 59, 0.25)) drop-shadow(0 0 25px rgba(138, 57, 59, 0.1)); }
+
+        @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .animate-spin-slow { animation: spin-slow 60s linear infinite; }
+
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+        .shimmer-text {
+            background: linear-gradient(90deg, #8A393B 0%, #ECA809 20%, #FFD700 50%, #ECA809 80%, #8A393B 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 4s linear infinite;
+            filter: drop-shadow(0 0 8px rgba(236, 168, 9, 0.3));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            25% { transform: translateY(-15px) translateX(8px) rotate(1.5deg); }
+            50% { transform: translateY(-30px) translateX(-8px) rotate(-1deg); }
+            75% { transform: translateY(-15px) translateX(4px) rotate(0.5deg); }
+        }
+
+        .flower-bokeh {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(50px);
+            opacity: 0.18;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { box-shadow: 0 2px 20px rgba(138, 57, 59, 0.1), 0 0 40px rgba(138, 57, 59, 0.05); }
+            50% { box-shadow: 0 4px 30px rgba(138, 57, 59, 0.2), 0 0 60px rgba(138, 57, 59, 0.08); }
+        }
+
+        @keyframes border-glow {
+            0%, 100% { border-color: rgba(236, 168, 9, 0.3); }
+            50% { border-color: rgba(236, 168, 9, 0.65); }
+        }
+
+        @keyframes card-glow {
+            0%, 100% { box-shadow: 0 4px 30px rgba(176, 147, 100, 0.08), 0 0 0 1px rgba(224, 201, 181, 0.6); }
+            50% { box-shadow: 0 8px 40px rgba(236, 168, 9, 0.12), 0 0 60px rgba(236, 168, 9, 0.05), 0 0 0 1px rgba(236, 168, 9, 0.25); }
+        }
+
+        @keyframes soft-glow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+
+        .countdown-box { animation: glow-pulse 3s ease-in-out infinite; }
+        .countdown-box:nth-child(2) { animation-delay: 0.5s; }
+        .countdown-box:nth-child(3) { animation-delay: 1s; }
+        .countdown-box:nth-child(4) { animation-delay: 1.5s; }
+
+        .photo-ring { animation: border-glow 3s ease-in-out infinite; }
+
+        .curtain-container { perspective: 1200px; }
+
+        .curtain-panel {
+            background-color: #5C2728;
+            background-image:
+                repeating-linear-gradient(90deg,
+                    rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.08) 12%,
+                    rgba(255, 255, 255, 0.03) 20%, rgba(0, 0, 0, 0.08) 28%,
+                    rgba(0, 0, 0, 0.35) 40%);
+            background-size: 100% 100%;
+            box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+            will-change: transform;
+        }
+
+        .curtain-hem {
+            background: linear-gradient(to bottom, #B09364, #FFD700, #ECA809, #FFD700, #B09364);
+            box-shadow: 0 0 20px rgba(236, 168, 9, 0.5), 0 0 40px rgba(236, 168, 9, 0.2);
+        }
+
+        .stage-glow {
+            background: radial-gradient(circle, rgba(250, 244, 234, 0.6) 0%, rgba(250, 244, 234, 0) 60%);
+            mix-blend-mode: normal;
+            opacity: 0;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: #B09364;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        .form-input {
+            transition: all 0.3s;
+            border: 1px solid #E0C9B5;
+        }
+        .form-input:focus {
+            border-color: #ECA809;
+            box-shadow: 0 0 15px rgba(236, 168, 9, 0.15), 0 0 30px rgba(236, 168, 9, 0.05);
+            transform: translateY(-1px);
+        }
+
+        .elegant-card {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(224, 201, 181, 0.7);
+            box-shadow: 0 4px 30px rgba(176, 147, 100, 0.08), 0 0 0 1px rgba(236, 168, 9, 0.05);
+            animation: card-glow 5s ease-in-out infinite;
+        }
+
+        .ornament-divider {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .ornament-divider::before, .ornament-divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(176, 147, 100, 0.4), transparent);
+        }
+
+        .split-char { display: inline-block; opacity: 0; }
+
+        @keyframes rotate-border {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes hanging-sway {
+            0%, 100% { transform: rotate(-2deg); }
+            50% { transform: rotate(2deg); }
+        }
+        .hanging-element { animation: hanging-sway 4s ease-in-out infinite; transform-origin: top center; }
+
+        .mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+        .mobile-menu.open {
+            max-height: 300px;
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-ivory text-maroon overflow-x-hidden selection:bg-softblush selection:text-maroon-dark">
+
+    <!-- Audio Player -->
+    <audio id="weddingMusic" loop>
+        <source src="wedding_song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Navigation -->
+    <nav id="mainNav" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 -translate-y-full opacity-0">
+        <div class="mx-auto max-w-5xl mt-4 px-4">
+            <div class="nav-bar-bg rounded-full px-6 md:px-8 py-3 flex items-center justify-between border border-beige/60" style="background: rgba(250, 244, 234, 0.9); backdrop-filter: blur(12px);">
+                <span class="font-script text-maroon text-xl">T & N</span>
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#hero" class="nav-link text-maroon/70 hover:text-maroon text-sm uppercase tracking-widest font-sans">Home</a>
+                    <a href="#couple" class="nav-link text-maroon/70 hover:text-maroon text-sm uppercase tracking-widest font-sans">Couple</a>
+                    <a href="#event" class="nav-link text-maroon/70 hover:text-maroon text-sm uppercase tracking-widest font-sans">Event</a>
+                    <a href="#venue" class="nav-link text-maroon/70 hover:text-maroon text-sm uppercase tracking-widest font-sans">Venue</a>
+                    <a href="#rsvp" class="nav-link text-maroon/70 hover:text-maroon text-sm uppercase tracking-widest font-sans">RSVP</a>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div id="musicControl" class="cursor-pointer hidden">
+                        <div class="w-9 h-9 rounded-full bg-antique/10 border border-antique/40 flex items-center justify-center hover:bg-antique/20 transition-all duration-300">
+                            <i id="musicIcon" class="fas fa-music text-antique text-xs"></i>
+                        </div>
+                    </div>
+                    <!-- Mobile menu toggle -->
+                    <button id="mobileMenuBtn" class="md:hidden w-9 h-9 rounded-full bg-antique/10 border border-antique/40 flex items-center justify-center hover:bg-antique/20 transition-all duration-300">
+                        <i id="menuIcon" class="fas fa-bars text-antique text-xs"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile dropdown -->
+            <div id="mobileMenu" class="mobile-menu md:hidden mt-2 mx-4 rounded-2xl border border-beige/60 overflow-hidden" style="background: rgba(250, 244, 234, 0.95); backdrop-filter: blur(12px);">
+                <div class="flex flex-col py-3">
+                    <a href="#hero" class="mobile-nav-link px-6 py-3 text-maroon/70 hover:text-maroon hover:bg-softblush/30 text-sm uppercase tracking-widest font-sans transition-colors">Home</a>
+                    <a href="#couple" class="mobile-nav-link px-6 py-3 text-maroon/70 hover:text-maroon hover:bg-softblush/30 text-sm uppercase tracking-widest font-sans transition-colors">Couple</a>
+                    <a href="#event" class="mobile-nav-link px-6 py-3 text-maroon/70 hover:text-maroon hover:bg-softblush/30 text-sm uppercase tracking-widest font-sans transition-colors">Event</a>
+                    <a href="#venue" class="mobile-nav-link px-6 py-3 text-maroon/70 hover:text-maroon hover:bg-softblush/30 text-sm uppercase tracking-widest font-sans transition-colors">Venue</a>
+                    <a href="#rsvp" class="mobile-nav-link px-6 py-3 text-maroon/70 hover:text-maroon hover:bg-softblush/30 text-sm uppercase tracking-widest font-sans transition-colors">RSVP</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==================== CURTAIN ENTRY ==================== -->
+    <div id="curtainLayer" class="fixed inset-0 z-[100] flex curtain-container overflow-hidden pointer-events-auto">
+        <div id="centerGlow" class="absolute inset-0 stage-glow z-[90]"></div>
+
+        <!-- Left Curtain -->
+        <div class="curtain-panel curtain-left w-1/2 h-full relative z-[100]">
+            <div class="absolute right-0 top-0 bottom-0 w-2 md:w-3 curtain-hem"></div>
+        </div>
+
+        <!-- Right Curtain -->
+        <div class="curtain-panel curtain-right w-1/2 h-full relative z-[100]">
+            <div class="absolute left-0 top-0 bottom-0 w-2 md:w-3 curtain-hem"></div>
+        </div>
+
+        <!-- Entry Content -->
+        <div id="entryContent" class="absolute inset-0 flex flex-col items-center justify-center z-[101] text-center px-4">
+            <!-- Hanging decorative elements -->
+            <div class="absolute top-0 left-[12%] flex flex-col items-center hanging-element" style="animation-delay: 0s;">
+                <div class="w-px h-12 md:h-20 bg-gradient-to-b from-antique/60 to-antique/20"></div>
+                <div class="w-3 h-3 rounded-full bg-golden shadow-[0_0_12px_rgba(236,168,9,0.6),0_0_25px_rgba(236,168,9,0.3)]" style="animation: soft-glow 3s ease-in-out infinite;"></div>
+            </div>
+            <div class="absolute top-0 right-[18%] flex flex-col items-center hanging-element" style="animation-delay: 1s;">
+                <div class="w-px h-16 md:h-24 bg-gradient-to-b from-golden/60 to-golden/20"></div>
+                <div class="w-3 h-3 rounded-full bg-golden shadow-[0_0_12px_rgba(236,168,9,0.6),0_0_25px_rgba(236,168,9,0.3)]" style="animation: soft-glow 3s ease-in-out infinite; animation-delay: 1s;"></div>
+            </div>
+            <div class="absolute top-0 left-[35%] flex flex-col items-center hanging-element hidden md:flex" style="animation-delay: 2s;">
+                <div class="w-px h-10 bg-gradient-to-b from-antique/40 to-antique/10"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-golden/70 shadow-[0_0_8px_rgba(236,168,9,0.4)]" style="animation: soft-glow 3s ease-in-out infinite; animation-delay: 2s;"></div>
+            </div>
+            <div class="absolute top-0 right-[30%] flex flex-col items-center hanging-element hidden md:flex" style="animation-delay: 0.5s;">
+                <div class="w-px h-14 bg-gradient-to-b from-antique/40 to-antique/10"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-golden/70 shadow-[0_0_8px_rgba(236,168,9,0.4)]" style="animation: soft-glow 3s ease-in-out infinite; animation-delay: 2s;"></div>
+            </div>
+
+            <div class="relative p-8 md:p-14 bg-gradient-to-br from-ivory via-blush to-ivory rounded-3xl shadow-[0_8px_60px_rgba(236,168,9,0.18),0_0_100px_rgba(176,147,100,0.1)] max-w-2xl mx-4 border border-golden/25">
+                <!-- Corner ornaments -->
+                <div class="absolute -top-3 -left-3 w-14 h-14 border-t-2 border-l-2 border-golden/50 rounded-tl-lg" style="filter: drop-shadow(0 0 6px rgba(236,168,9,0.3));"></div>
+                <div class="absolute -top-3 -right-3 w-14 h-14 border-t-2 border-r-2 border-golden/50 rounded-tr-lg" style="filter: drop-shadow(0 0 6px rgba(236,168,9,0.3));"></div>
+                <div class="absolute -bottom-3 -left-3 w-14 h-14 border-b-2 border-l-2 border-golden/50 rounded-bl-lg" style="filter: drop-shadow(0 0 6px rgba(236,168,9,0.3));"></div>
+                <div class="absolute -bottom-3 -right-3 w-14 h-14 border-b-2 border-r-2 border-golden/50 rounded-br-lg" style="filter: drop-shadow(0 0 6px rgba(236,168,9,0.3));"></div>
+
+                <!-- Decorative leaf accents in corners -->
+                <svg class="absolute top-2 left-2 w-10 h-10 opacity-20" viewBox="0 0 40 40" fill="none">
+                    <path d="M5,35 Q5,15 25,5" stroke="#528F34" stroke-width="1.2" fill="none"/>
+                    <ellipse cx="14" cy="18" rx="6" ry="3" fill="#528F34" opacity="0.5" transform="rotate(-50 14 18)"/>
+                    <ellipse cx="22" cy="10" rx="5" ry="2.5" fill="#65A73D" opacity="0.4" transform="rotate(-30 22 10)"/>
+                </svg>
+                <svg class="absolute bottom-2 right-2 w-10 h-10 opacity-20" viewBox="0 0 40 40" fill="none">
+                    <path d="M35,5 Q35,25 15,35" stroke="#528F34" stroke-width="1.2" fill="none"/>
+                    <ellipse cx="26" cy="22" rx="6" ry="3" fill="#528F34" opacity="0.5" transform="rotate(130 26 22)"/>
+                    <ellipse cx="18" cy="30" rx="5" ry="2.5" fill="#65A73D" opacity="0.4" transform="rotate(150 18 30)"/>
+                </svg>
+
+                <!-- Om Symbol -->
+                <div class="mb-4 entry-text">
+                    <span class="text-5xl text-golden font-serif leading-none glow-gold" style="font-family: serif;">&#x0950;</span>
+                </div>
+
+                <p class="font-elegant text-antique/70 text-sm md:text-base tracking-[0.4em] uppercase mb-2 entry-text">Shubh Vivah</p>
+
+                <h2 class="font-script text-maroon text-4xl md:text-6xl mb-4 entry-text shimmer-text">You Are Invited</h2>
+
+                <div class="my-6 entry-text">
+                    <div class="ornament-divider text-antique/50 text-sm">
+                        <span class="font-elegant tracking-[0.3em] uppercase text-dusty">To The Sacred Union Of</span>
+                    </div>
+                </div>
+
+                <h1 class="font-script text-maroon text-5xl md:text-7xl mb-2 entry-text text-shadow-maroon">Tamilarasan</h1>
+                <div class="text-antique text-3xl mb-2 entry-text font-script">&</div>
+                <h1 class="font-script text-maroon text-5xl md:text-7xl mb-6 entry-text text-shadow-maroon">Navina</h1>
+
+                <p class="font-elegant text-dusty text-base md:text-lg italic entry-text mb-8">"Two souls, one heart, forever united"</p>
+
+                <button id="openBtn"
+                    class="group relative px-10 py-4 bg-transparent text-maroon font-elegant text-lg md:text-xl tracking-[0.2em] uppercase overflow-hidden border-2 border-golden/60 rounded-full transition-all duration-700 hover:text-ivory hover:border-golden hover:shadow-[0_0_40px_rgba(236,168,9,0.3),0_0_80px_rgba(236,168,9,0.1)]" style="box-shadow: 0 0 20px rgba(236,168,9,0.1);">
+                    <span class="relative z-10 flex items-center gap-3 font-semibold">
+                        Open Invitation
+                    </span>
+                    <div class="absolute inset-0 bg-gradient-to-r from-maroon via-golden to-maroon transform scale-x-0 group-hover:scale-x-100 transition-transform origin-center duration-700 ease-out"></div>
+                </button>
+            </div>
+
+            <p class="mt-6 text-sm text-dusty/60 entry-text font-elegant tracking-widest animate-bounce">Tap to begin</p>
+        </div>
+    </div>
+
+    <!-- ==================== MAIN CONTENT ==================== -->
+    <main id="mainContent" class="opacity-0 filter blur-xl">
+
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-screen relative flex flex-col items-center justify-center overflow-hidden" style="background: linear-gradient(160deg, #C49A3C 0%, #E8C96E 25%, #F5DFA0 50%, #E8C96E 75%, #C49A3C 100%);">
+            <!-- Radiant center glow -->
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.25)_0%,rgba(245,223,160,0.15)_30%,transparent_65%)]"></div>
+            <!-- Warm vignette edges -->
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(160,120,40,0.2)_100%)]"></div>
+
+            <!-- Background mandala decoration -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <svg viewBox="0 0 500 500" class="w-[600px] h-[600px] opacity-[0.07]">
+                    <circle cx="250" cy="250" r="200" stroke="#8A393B" fill="none" stroke-width="0.6"/>
+                    <circle cx="250" cy="250" r="170" stroke="#8A393B" fill="none" stroke-width="0.4"/>
+                    <circle cx="250" cy="250" r="140" stroke="#8A393B" fill="none" stroke-width="0.4"/>
+                    <circle cx="250" cy="250" r="110" stroke="#8A393B" fill="none" stroke-width="0.3"/>
+                    <g opacity="0.5">
+                        <ellipse cx="250" cy="80" rx="15" ry="30" fill="none" stroke="#8A393B" stroke-width="0.4"/>
+                        <ellipse cx="250" cy="420" rx="15" ry="30" fill="none" stroke="#8A393B" stroke-width="0.4"/>
+                        <ellipse cx="80" cy="250" rx="30" ry="15" fill="none" stroke="#8A393B" stroke-width="0.4"/>
+                        <ellipse cx="420" cy="250" rx="30" ry="15" fill="none" stroke="#8A393B" stroke-width="0.4"/>
+                        <ellipse cx="130" cy="130" rx="20" ry="25" fill="none" stroke="#8A393B" stroke-width="0.3" transform="rotate(-45 130 130)"/>
+                        <ellipse cx="370" cy="130" rx="20" ry="25" fill="none" stroke="#8A393B" stroke-width="0.3" transform="rotate(45 370 130)"/>
+                        <ellipse cx="130" cy="370" rx="20" ry="25" fill="none" stroke="#8A393B" stroke-width="0.3" transform="rotate(45 130 370)"/>
+                        <ellipse cx="370" cy="370" rx="20" ry="25" fill="none" stroke="#8A393B" stroke-width="0.3" transform="rotate(-45 370 370)"/>
+                    </g>
+                </svg>
+            </div>
+
+            <!-- Decorative leaf accents -->
+            <svg class="absolute top-8 left-4 md:left-12 w-20 md:w-28 opacity-[0.12] pointer-events-none" viewBox="0 0 100 150" fill="none">
+                <path d="M80,140 Q20,100 30,40 Q35,20 50,10" stroke="#5C2728" stroke-width="1.5" fill="none"/>
+                <ellipse cx="40" cy="60" rx="18" ry="8" fill="#5C2728" transform="rotate(-30 40 60)"/>
+                <ellipse cx="55" cy="35" rx="14" ry="6" fill="#6D2D2F" transform="rotate(-50 55 35)"/>
+                <ellipse cx="35" cy="90" rx="16" ry="7" fill="#5C2728" transform="rotate(-15 35 90)"/>
+            </svg>
+            <svg class="absolute top-8 right-4 md:right-12 w-20 md:w-28 opacity-[0.12] pointer-events-none" viewBox="0 0 100 150" fill="none" style="transform: scaleX(-1);">
+                <path d="M80,140 Q20,100 30,40 Q35,20 50,10" stroke="#5C2728" stroke-width="1.5" fill="none"/>
+                <ellipse cx="40" cy="60" rx="18" ry="8" fill="#5C2728" transform="rotate(-30 40 60)"/>
+                <ellipse cx="55" cy="35" rx="14" ry="6" fill="#6D2D2F" transform="rotate(-50 55 35)"/>
+                <ellipse cx="35" cy="90" rx="16" ry="7" fill="#5C2728" transform="rotate(-15 35 90)"/>
+            </svg>
+
+            <div class="relative z-10 text-center px-4 max-w-4xl mx-auto">
+                <div class="gsap-hero-reveal opacity-0 transform translate-y-8">
+                    <span class="text-5xl md:text-6xl text-maroon-deep leading-none inline-block mb-6 glow-maroon" style="font-family: serif;">&#x0950;</span>
+                </div>
+
+                <p class="gsap-hero-reveal font-elegant text-maroon-dark/60 tracking-[0.4em] uppercase text-sm mb-6 opacity-0 transform translate-y-8">
+                    Together with our families</p>
+
+                <h1 id="heroTitle" class="gsap-hero-reveal font-script text-6xl md:text-8xl lg:text-9xl text-maroon-deep mb-2 opacity-0 transform translate-y-8 text-glow-maroon leading-tight">
+                    Tamilarasan
+                </h1>
+                <div class="gsap-hero-reveal opacity-0 transform translate-y-8 my-4">
+                    <span class="font-script text-maroon-dark text-4xl md:text-5xl" style="text-shadow: 0 0 15px rgba(138,57,59,0.3);">&</span>
+                </div>
+                <h1 class="gsap-hero-reveal font-script text-6xl md:text-8xl lg:text-9xl text-maroon-deep mb-8 opacity-0 transform translate-y-8 text-glow-maroon leading-tight">
+                    Navina
+                </h1>
+
+                <p class="gsap-hero-reveal font-elegant text-lg md:text-xl text-maroon-dark/60 mb-12 opacity-0 transform translate-y-8 italic">
+                    Request the honour of your presence at their wedding reception
+                </p>
+
+                <div class="gsap-hero-reveal opacity-0 transform translate-y-8 mb-4">
+                    <div class="inline-flex flex-col items-center gap-2 border border-maroon/20 py-5 px-10 rounded-2xl" style="background: rgba(92,39,40,0.08); box-shadow: 0 4px 30px rgba(138,57,59,0.08), inset 0 0 30px rgba(255,255,255,0.15);">
+                        <span class="font-elegant text-maroon-dark/50 text-sm tracking-[0.3em] uppercase">Save the Date</span>
+                        <span class="font-serif text-2xl md:text-3xl tracking-wider text-maroon-deep text-glow-maroon">September 20, 2026</span>
+                        <span class="font-sans text-maroon-dark/50 tracking-widest text-xs uppercase">Tirupattur, Tamil Nadu</span>
+                    </div>
+                </div>
+
+                <!-- Countdown -->
+                <div class="gsap-hero-reveal opacity-0 transform translate-y-8 mt-10">
+                    <p class="font-elegant text-maroon-dark/50 text-sm tracking-[0.3em] uppercase mb-6">Counting Down To The Big Day</p>
+                    <div class="flex justify-center gap-3 md:gap-5">
+                        <div class="text-center countdown-box">
+                            <div class="rounded-2xl p-3 md:p-5 min-w-[70px] md:min-w-[90px] border border-maroon/15" style="background: rgba(92,39,40,0.08); box-shadow: 0 4px 20px rgba(138,57,59,0.06);">
+                                <div id="days" class="font-serif text-3xl md:text-5xl text-maroon-deep font-bold text-glow-maroon">00</div>
+                                <div class="text-[10px] md:text-xs text-maroon-dark/45 uppercase tracking-widest mt-1 font-sans">Days</div>
+                            </div>
+                        </div>
+                        <div class="text-maroon-dark/30 self-center text-2xl font-light">:</div>
+                        <div class="text-center countdown-box">
+                            <div class="rounded-2xl p-3 md:p-5 min-w-[70px] md:min-w-[90px] border border-maroon/15" style="background: rgba(92,39,40,0.08); box-shadow: 0 4px 20px rgba(138,57,59,0.06);">
+                                <div id="hours" class="font-serif text-3xl md:text-5xl text-maroon-deep font-bold text-glow-maroon">00</div>
+                                <div class="text-[10px] md:text-xs text-maroon-dark/45 uppercase tracking-widest mt-1 font-sans">Hours</div>
+                            </div>
+                        </div>
+                        <div class="text-maroon-dark/30 self-center text-2xl font-light">:</div>
+                        <div class="text-center countdown-box">
+                            <div class="rounded-2xl p-3 md:p-5 min-w-[70px] md:min-w-[90px] border border-maroon/15" style="background: rgba(92,39,40,0.08); box-shadow: 0 4px 20px rgba(138,57,59,0.06);">
+                                <div id="minutes" class="font-serif text-3xl md:text-5xl text-maroon-deep font-bold text-glow-maroon">00</div>
+                                <div class="text-[10px] md:text-xs text-maroon-dark/45 uppercase tracking-widest mt-1 font-sans">Min</div>
+                            </div>
+                        </div>
+                        <div class="text-maroon-dark/30 self-center text-2xl font-light">:</div>
+                        <div class="text-center countdown-box">
+                            <div class="rounded-2xl p-3 md:p-5 min-w-[70px] md:min-w-[90px] border border-maroon/15" style="background: rgba(92,39,40,0.08); box-shadow: 0 4px 20px rgba(138,57,59,0.06);">
+                                <div id="seconds" class="font-serif text-3xl md:text-5xl text-maroon-deep font-bold text-glow-maroon">00</div>
+                                <div class="text-[10px] md:text-xs text-maroon-dark/45 uppercase tracking-widest mt-1 font-sans">Sec</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce opacity-50">
+                    <i class="fas fa-chevron-down text-maroon-dark text-lg"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Couple Section — Deep Maroon -->
+        <section id="couple" class="py-28 relative overflow-hidden" style="background: linear-gradient(160deg, #4A2223 0%, #6D2D2F 25%, #8A393B 50%, #6D2D2F 75%, #4A2223 100%);">
+            <!-- Radiant center glow -->
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(236,168,9,0.08)_0%,transparent_55%)]"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.04)_0%,transparent_40%)]"></div>
+            <!-- Bokeh lights -->
+            <div class="flower-bokeh" style="width: 220px; height: 220px; background: #ECA809; top: 5%; left: 5%;"></div>
+            <div class="flower-bokeh" style="width: 180px; height: 180px; background: #D4A843; top: 15%; right: 8%; animation-delay: 3s;"></div>
+            <div class="flower-bokeh" style="width: 160px; height: 160px; background: #ECA809; bottom: 10%; right: 15%; animation-delay: 5s;"></div>
+            <div class="flower-bokeh" style="width: 200px; height: 200px; background: #D4A843; bottom: 20%; left: 8%; animation-delay: 2s;"></div>
+            <div class="flower-bokeh" style="width: 140px; height: 140px; background: #B09364; top: 50%; left: 45%; animation-delay: 4s;"></div>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-20">
+                    <p class="font-elegant text-golden/60 text-sm tracking-[0.4em] uppercase mb-3 section-subtitle opacity-0">The Happy Couple</p>
+                    <h2 class="font-serif text-4xl md:text-6xl text-golden mb-6 section-title opacity-0" style="text-shadow: 0 0 20px rgba(236,168,9,0.35), 0 0 50px rgba(236,168,9,0.15);">Our Story</h2>
+                    <svg viewBox="0 0 200 24" class="w-40 h-6 mx-auto opacity-70" style="filter: drop-shadow(0 0 6px rgba(236,168,9,0.3));">
+                        <line x1="10" y1="12" x2="80" y2="12" stroke="#ECA809" stroke-width="0.5"/>
+                        <line x1="120" y1="12" x2="190" y2="12" stroke="#ECA809" stroke-width="0.5"/>
+                        <circle cx="100" cy="12" r="4" fill="none" stroke="#ECA809" stroke-width="0.8"/>
+                        <circle cx="100" cy="12" r="1.5" fill="#ECA809"/>
+                        <ellipse cx="88" cy="10" rx="6" ry="3" fill="#D4A843" opacity="0.5" transform="rotate(-20 88 10)"/>
+                        <ellipse cx="112" cy="10" rx="6" ry="3" fill="#D4A843" opacity="0.5" transform="rotate(20 112 10)"/>
+                    </svg>
+                </div>
+
+                <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-20 lg:gap-32">
+                    <!-- Groom -->
+                    <div class="text-center couple-card opacity-0 transform -translate-x-20">
+                        <div class="relative w-56 h-56 md:w-72 md:h-72 mx-auto mb-8 group cursor-pointer"
+                             onclick="var img = this.querySelector('img'); if(img.src.includes('_bkup')) { img.src = 'groom_image.jpeg'; img.style.objectPosition = 'center'; } else { img.src = 'groom_image_bkup.jpeg'; img.style.objectPosition = 'center 1cm'; }">
+                            <div class="absolute -inset-3 rounded-full border-2 border-dashed border-golden/30" style="animation: rotate-border 30s linear infinite; filter: drop-shadow(0 0 6px rgba(236,168,9,0.2));"></div>
+                            <div class="absolute -inset-1 rounded-full border-2 border-golden/50 photo-ring"></div>
+                            <img src="groom_image_bkup.jpeg"
+                                class="w-full h-full object-cover rounded-full shadow-[0_4px_30px_rgba(236,168,9,0.2)] transition-all duration-700 group-hover:shadow-[0_8px_60px_rgba(236,168,9,0.35)] group-hover:scale-105"
+                                style="object-position: center 1cm;" alt="Groom">
+                        </div>
+                        <h3 class="font-script text-4xl md:text-5xl text-golden mb-2" style="text-shadow: 0 0 15px rgba(236,168,9,0.3);">Tamilarasan</h3>
+                        <p class="font-elegant text-golden/50 text-sm tracking-widest uppercase mb-3">The Groom</p>
+                        <p class="font-elegant text-beige/50 text-sm italic max-w-[250px] mx-auto leading-relaxed">"The moment I saw her, I knew my search was over."</p>
+                    </div>
+
+                    <!-- Connector -->
+                    <div class="flex flex-col items-center gap-4 couple-heart opacity-0">
+                        <div class="w-px h-12 bg-gradient-to-b from-transparent via-golden/30 to-transparent hidden md:block"></div>
+                        <div class="w-16 h-16 rounded-full border-2 border-golden/40 flex items-center justify-center" style="background: rgba(236,168,9,0.08); box-shadow: 0 0 25px rgba(236,168,9,0.2), 0 0 50px rgba(236,168,9,0.06);">
+                            <i class="fas fa-heart text-golden text-xl animate-pulse" style="filter: drop-shadow(0 0 8px rgba(236,168,9,0.4));"></i>
+                        </div>
+                        <div class="w-px h-12 bg-gradient-to-b from-transparent via-golden/30 to-transparent hidden md:block"></div>
+                    </div>
+
+                    <!-- Bride -->
+                    <div class="text-center couple-card opacity-0 transform translate-x-20">
+                        <div class="relative w-56 h-56 md:w-72 md:h-72 mx-auto mb-8 group cursor-pointer"
+                             onclick="var img = this.querySelector('img'); if(img.src.includes('_front')) { img.src = 'bride_photo.jpeg'; img.style.objectPosition = 'center'; } else { img.src = 'bride_photo_front.jpeg'; img.style.objectPosition = 'center'; }">
+                            <div class="absolute -inset-3 rounded-full border-2 border-dashed border-golden/30" style="animation: rotate-border 30s linear infinite reverse; filter: drop-shadow(0 0 6px rgba(236,168,9,0.2));"></div>
+                            <div class="absolute -inset-1 rounded-full border-2 border-golden/50 photo-ring"></div>
+                            <img src="bride_photo_front.jpeg"
+                                class="w-full h-full object-cover rounded-full shadow-[0_4px_30px_rgba(236,168,9,0.2)] transition-all duration-700 group-hover:shadow-[0_8px_60px_rgba(236,168,9,0.35)] group-hover:scale-105"
+                                alt="Bride">
+                        </div>
+                        <h3 class="font-script text-4xl md:text-5xl text-golden mb-2" style="text-shadow: 0 0 15px rgba(236,168,9,0.3);">Navina</h3>
+                        <p class="font-elegant text-golden/50 text-sm tracking-widest uppercase mb-3">The Bride</p>
+                        <p class="font-elegant text-beige/50 text-sm italic max-w-[250px] mx-auto leading-relaxed">"In him, I found my love, my best friend, and my home."</p>
+                    </div>
+                </div>
+
+                <!-- Typewriter -->
+                <div class="mt-20 text-center max-w-2xl mx-auto">
+                    <div class="rounded-2xl p-8 md:p-10 border border-golden/15" style="background: rgba(236,168,9,0.05); box-shadow: 0 4px 30px rgba(0,0,0,0.15);">
+                        <i class="fas fa-quote-left text-golden/25 text-3xl mb-4 block" style="filter: drop-shadow(0 0 8px rgba(236,168,9,0.2));"></i>
+                        <p id="storyTypewriter" class="font-elegant text-lg md:text-xl text-beige/60 leading-relaxed"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Event Section — Golden -->
+        <section id="event" class="py-28 relative overflow-hidden" style="background: linear-gradient(160deg, #C49A3C 0%, #E8C96E 25%, #F5DFA0 50%, #E8C96E 75%, #C49A3C 100%);">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.2)_0%,transparent_55%)]"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(160,120,40,0.15)_100%)]"></div>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-20">
+                    <p class="font-elegant text-maroon-dark/50 text-sm tracking-[0.4em] uppercase mb-3 section-subtitle opacity-0">Join Us</p>
+                    <h2 class="font-serif text-4xl md:text-6xl text-maroon-deep mb-6 section-title opacity-0 text-glow-maroon">The Celebration</h2>
+                    <svg viewBox="0 0 200 24" class="w-40 h-6 mx-auto opacity-60" style="filter: drop-shadow(0 0 4px rgba(138,57,59,0.15));">
+                        <line x1="10" y1="12" x2="80" y2="12" stroke="#8A393B" stroke-width="0.5"/>
+                        <line x1="120" y1="12" x2="190" y2="12" stroke="#8A393B" stroke-width="0.5"/>
+                        <circle cx="100" cy="12" r="4" fill="none" stroke="#8A393B" stroke-width="0.8"/>
+                        <circle cx="100" cy="12" r="1.5" fill="#8A393B"/>
+                        <ellipse cx="88" cy="10" rx="6" ry="3" fill="#5C2728" opacity="0.3" transform="rotate(-20 88 10)"/>
+                        <ellipse cx="112" cy="10" rx="6" ry="3" fill="#5C2728" opacity="0.3" transform="rotate(20 112 10)"/>
+                    </svg>
+                </div>
+
+                <!-- Grand Event Card -->
+                <div class="max-w-3xl mx-auto event-card opacity-0 transform translate-y-10">
+                    <div class="relative rounded-3xl p-8 md:p-12 overflow-hidden border border-maroon/15" style="background: rgba(92,39,40,0.06); box-shadow: 0 8px 40px rgba(138,57,59,0.08), inset 0 0 40px rgba(255,255,255,0.12);">
+                        <!-- Corner flourishes -->
+                        <div class="absolute top-4 left-4 w-16 h-16 border-t border-l border-maroon/25 rounded-tl-2xl" style="filter: drop-shadow(0 0 4px rgba(138,57,59,0.15));"></div>
+                        <div class="absolute top-4 right-4 w-16 h-16 border-t border-r border-maroon/25 rounded-tr-2xl" style="filter: drop-shadow(0 0 4px rgba(138,57,59,0.15));"></div>
+                        <div class="absolute bottom-4 left-4 w-16 h-16 border-b border-l border-maroon/25 rounded-bl-2xl" style="filter: drop-shadow(0 0 4px rgba(138,57,59,0.15));"></div>
+                        <div class="absolute bottom-4 right-4 w-16 h-16 border-b border-r border-maroon/25 rounded-br-2xl" style="filter: drop-shadow(0 0 4px rgba(138,57,59,0.15));"></div>
+
+                        <div class="text-center">
+                            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full border border-maroon/25 mb-8" style="background: rgba(138,57,59,0.1); box-shadow: 0 0 25px rgba(138,57,59,0.12);">
+                                <i class="fas fa-glass-cheers text-maroon-deep text-3xl glow-maroon"></i>
+                            </div>
+
+                            <h3 class="font-serif text-3xl md:text-5xl text-maroon-deep mb-2 text-glow-maroon">Wedding Reception</h3>
+                            <p class="font-elegant text-maroon-dark/50 italic text-lg mb-10">"Celebrate with us!"</p>
+
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4 mb-10">
+                                <div class="flex flex-col items-center gap-3 p-4">
+                                    <div class="w-12 h-12 rounded-full border border-maroon/20 flex items-center justify-center" style="background: rgba(138,57,59,0.08); box-shadow: 0 0 12px rgba(138,57,59,0.08);">
+                                        <i class="fas fa-calendar-alt text-maroon-deep"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-elegant text-maroon-dark/45 text-xs tracking-widest uppercase mb-1">Date</p>
+                                        <p class="font-serif text-maroon-deep text-lg">20th September 2026</p>
+                                        <p class="font-sans text-maroon-dark/40 text-sm">Sunday</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col items-center gap-3 p-4 md:border-x md:border-maroon/10">
+                                    <div class="w-12 h-12 rounded-full border border-maroon/20 flex items-center justify-center" style="background: rgba(138,57,59,0.08); box-shadow: 0 0 12px rgba(138,57,59,0.08);">
+                                        <i class="fas fa-clock text-maroon-deep"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-elegant text-maroon-dark/45 text-xs tracking-widest uppercase mb-1">Time</p>
+                                        <p class="font-serif text-maroon-deep text-lg">11:30 AM - 3:00 PM</p>
+                                        <p class="font-sans text-maroon-dark/40 text-sm">Lunch will be served</p>
+                                    </div>
+                                </div>
+
+                                <div class="flex flex-col items-center gap-3 p-4">
+                                    <div class="w-12 h-12 rounded-full border border-maroon/20 flex items-center justify-center" style="background: rgba(138,57,59,0.08); box-shadow: 0 0 12px rgba(138,57,59,0.08);">
+                                        <i class="fas fa-map-marker-alt text-maroon-deep"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-elegant text-maroon-dark/45 text-xs tracking-widest uppercase mb-1">Venue</p>
+                                        <p class="font-serif text-maroon-deep text-lg">Manikam Mahal A/C</p>
+                                        <p class="font-sans text-maroon-dark/40 text-sm">Tirupattur District</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="rounded-xl p-6 border border-maroon/10" style="background: rgba(92,39,40,0.05);">
+                                <p class="font-sans text-maroon-dark/50 text-sm leading-relaxed">
+                                    <i class="fas fa-location-dot text-maroon/40 mr-2"></i>
+                                    Manikam Mahal A/C, Tirupattur-Vaniyambadi Main Road, Salai Nagar, Tirupattur District
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Family & Venue Section — Deep Maroon -->
+        <section id="venue" class="py-28 relative overflow-hidden" style="background: linear-gradient(160deg, #4A2223 0%, #6D2D2F 25%, #8A393B 50%, #6D2D2F 75%, #4A2223 100%);">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(236,168,9,0.06)_0%,transparent_50%)]"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.03)_0%,transparent_40%)]"></div>
+
+            <!-- Decorative leaves -->
+            <svg class="absolute bottom-0 left-0 w-32 md:w-48 opacity-[0.08] pointer-events-none" viewBox="0 0 200 300" fill="none">
+                <path d="M10,290 Q30,200 60,150 Q80,110 100,60 Q110,30 120,10" stroke="#ECA809" stroke-width="1.5" fill="none"/>
+                <ellipse cx="50" cy="180" rx="30" ry="14" fill="#ECA809" opacity="0.3" transform="rotate(-25 50 180)"/>
+                <ellipse cx="80" cy="120" rx="25" ry="12" fill="#D4A843" opacity="0.25" transform="rotate(-40 80 120)"/>
+                <ellipse cx="100" cy="70" rx="20" ry="10" fill="#ECA809" opacity="0.3" transform="rotate(-55 100 70)"/>
+                <ellipse cx="40" cy="240" rx="28" ry="13" fill="#D4A843" opacity="0.25" transform="rotate(-10 40 240)"/>
+            </svg>
+            <svg class="absolute bottom-0 right-0 w-32 md:w-48 opacity-[0.08] pointer-events-none" viewBox="0 0 200 300" fill="none" style="transform: scaleX(-1);">
+                <path d="M10,290 Q30,200 60,150 Q80,110 100,60 Q110,30 120,10" stroke="#ECA809" stroke-width="1.5" fill="none"/>
+                <ellipse cx="50" cy="180" rx="30" ry="14" fill="#ECA809" opacity="0.3" transform="rotate(-25 50 180)"/>
+                <ellipse cx="80" cy="120" rx="25" ry="12" fill="#D4A843" opacity="0.25" transform="rotate(-40 80 120)"/>
+                <ellipse cx="100" cy="70" rx="20" ry="10" fill="#ECA809" opacity="0.3" transform="rotate(-55 100 70)"/>
+                <ellipse cx="40" cy="240" rx="28" ry="13" fill="#D4A843" opacity="0.25" transform="rotate(-10 40 240)"/>
+            </svg>
+
+            <div class="container mx-auto px-6 relative z-10">
+                <div class="text-center mb-20">
+                    <p class="font-elegant text-golden/50 text-sm tracking-[0.4em] uppercase mb-3 section-subtitle opacity-0">With Blessings</p>
+                    <h2 class="font-serif text-4xl md:text-6xl text-golden mb-6 section-title opacity-0" style="text-shadow: 0 0 20px rgba(236,168,9,0.35), 0 0 50px rgba(236,168,9,0.15);">Our Families</h2>
+                    <svg viewBox="0 0 200 24" class="w-40 h-6 mx-auto opacity-70" style="filter: drop-shadow(0 0 6px rgba(236,168,9,0.3));">
+                        <line x1="10" y1="12" x2="80" y2="12" stroke="#ECA809" stroke-width="0.5"/>
+                        <line x1="120" y1="12" x2="190" y2="12" stroke="#ECA809" stroke-width="0.5"/>
+                        <circle cx="100" cy="12" r="4" fill="none" stroke="#ECA809" stroke-width="0.8"/>
+                        <circle cx="100" cy="12" r="1.5" fill="#ECA809"/>
+                        <ellipse cx="88" cy="10" rx="6" ry="3" fill="#D4A843" opacity="0.5" transform="rotate(-20 88 10)"/>
+                        <ellipse cx="112" cy="10" rx="6" ry="3" fill="#D4A843" opacity="0.5" transform="rotate(20 112 10)"/>
+                    </svg>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                    <!-- Family Card -->
+                    <div class="venue-card opacity-0 transform translate-y-10">
+                        <div class="rounded-3xl p-8 md:p-10 h-full relative overflow-hidden border border-golden/15" style="background: rgba(236,168,9,0.04); box-shadow: 0 4px 30px rgba(0,0,0,0.15);">
+                            <div class="text-center">
+                                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-golden/35 mb-6" style="background: rgba(236,168,9,0.08); box-shadow: 0 0 25px rgba(236,168,9,0.15);">
+                                    <i class="fas fa-crown text-golden text-xl glow-gold"></i>
+                                </div>
+                                <h3 class="font-serif text-2xl md:text-3xl text-golden mb-10" style="text-shadow: 0 0 12px rgba(236,168,9,0.25);">Blessings From</h3>
+
+                                <div class="space-y-8">
+                                    <div class="group">
+                                        <p class="font-elegant text-golden/45 text-xs tracking-[0.3em] uppercase mb-3">Groom's Parents</p>
+                                        <div class="rounded-xl p-5 border border-golden/12 group-hover:border-golden/30 transition-colors duration-500" style="background: rgba(236,168,9,0.04);">
+                                            <p class="font-serif text-xl text-beige">Mr. G.Sekar</p>
+                                            <p class="font-elegant text-golden/40 text-sm my-1">&</p>
+                                            <p class="font-serif text-xl text-beige">Mrs. R.Gejalakshmi</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="w-16 h-px bg-gradient-to-r from-transparent via-golden/25 to-transparent mx-auto"></div>
+
+                                    <div class="group">
+                                        <p class="font-elegant text-golden/45 text-xs tracking-[0.3em] uppercase mb-3">Bride's Parents</p>
+                                        <div class="rounded-xl p-5 border border-golden/12 group-hover:border-golden/30 transition-colors duration-500" style="background: rgba(236,168,9,0.04);">
+                                            <p class="font-serif text-xl text-beige">Mr. K.Kuppusamy</p>
+                                            <p class="font-elegant text-golden/40 text-sm my-1">&</p>
+                                            <p class="font-serif text-xl text-beige">Mrs. K.Lakshmi</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Venue Map -->
+                    <div class="venue-card opacity-0 transform translate-y-10">
+                        <div class="rounded-3xl p-6 md:p-8 h-full border border-golden/15" style="background: rgba(236,168,9,0.04); box-shadow: 0 4px 30px rgba(0,0,0,0.15);">
+                            <div class="text-center mb-6">
+                                <div class="inline-flex items-center justify-center w-16 h-16 rounded-full border-2 border-golden/35 mb-4" style="background: rgba(236,168,9,0.08); box-shadow: 0 0 25px rgba(236,168,9,0.15);">
+                                    <i class="fas fa-map-location-dot text-golden text-xl glow-gold"></i>
+                                </div>
+                                <h3 class="font-serif text-2xl md:text-3xl text-golden" style="text-shadow: 0 0 12px rgba(236,168,9,0.25);">Reception Venue</h3>
+                            </div>
+
+                            <div class="w-full h-56 md:h-64 mb-6 relative overflow-hidden rounded-2xl border border-golden/15" style="box-shadow: 0 0 20px rgba(236,168,9,0.08);">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3889.5!2d78.5684064!3d12.526203!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bac5563255c6377%3A0x64931ffe1ac6f3ad!2sManickam%20Mahal%20-%20Tirupathur!5e0!3m2!1sen!2sin!4v1709400000000!5m2!1sen!2sin"
+                                    width="100%" height="100%" style="border:0;" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
+
+                            <div class="text-center space-y-4">
+                                <p class="font-serif text-lg text-beige/80">Manikam Mahal A/C</p>
+                                <p class="font-sans text-beige/40 text-sm">Tirupattur-Vaniyambadi Main Road, Salai Nagar, Tirupattur District</p>
+                                <a href="https://maps.app.goo.gl/WzkievK7Rrbdvc3PA" target="_blank"
+                                    class="inline-flex items-center gap-2 text-golden border border-golden/35 px-6 py-3 rounded-full hover:bg-golden hover:text-maroon-deep transition-all duration-500 text-sm tracking-wider font-semibold uppercase hover:shadow-[0_0_30px_rgba(236,168,9,0.25)]" style="background: rgba(236,168,9,0.08);">
+                                    <i class="fas fa-diamond-turn-right"></i>
+                                    Get Directions
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Section — Golden -->
+        <section id="rsvp" class="py-28 relative overflow-hidden" style="background: linear-gradient(160deg, #C49A3C 0%, #E8C96E 25%, #F5DFA0 50%, #E8C96E 75%, #C49A3C 100%);">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.2)_0%,transparent_55%)]"></div>
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(160,120,40,0.15)_100%)]"></div>
+
+            <!-- Decorative floral accents -->
+            <svg class="absolute top-10 right-4 md:right-16 w-24 md:w-36 opacity-[0.1] pointer-events-none" viewBox="0 0 150 200" fill="none">
+                <path d="M130,190 Q110,140 90,100 Q75,70 70,30 Q68,15 65,5" stroke="#5C2728" stroke-width="1.5" fill="none"/>
+                <ellipse cx="100" cy="130" rx="22" ry="10" fill="#5C2728" transform="rotate(25 100 130)"/>
+                <ellipse cx="80" cy="80" rx="18" ry="8" fill="#6D2D2F" transform="rotate(40 80 80)"/>
+                <ellipse cx="72" cy="40" rx="15" ry="7" fill="#5C2728" transform="rotate(50 72 40)"/>
+            </svg>
+            <svg class="absolute bottom-10 left-4 md:left-16 w-24 md:w-36 opacity-[0.1] pointer-events-none" viewBox="0 0 150 200" fill="none" style="transform: scaleX(-1) scaleY(-1);">
+                <path d="M130,190 Q110,140 90,100 Q75,70 70,30 Q68,15 65,5" stroke="#5C2728" stroke-width="1.5" fill="none"/>
+                <ellipse cx="100" cy="130" rx="22" ry="10" fill="#5C2728" transform="rotate(25 100 130)"/>
+                <ellipse cx="80" cy="80" rx="18" ry="8" fill="#6D2D2F" transform="rotate(40 80 80)"/>
+                <ellipse cx="72" cy="40" rx="15" ry="7" fill="#5C2728" transform="rotate(50 72 40)"/>
+            </svg>
+
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="text-center mb-16">
+                    <p class="font-elegant text-maroon-dark/50 text-sm tracking-[0.4em] uppercase mb-3 section-subtitle opacity-0">We'd Love To See You</p>
+                    <h2 class="font-serif text-4xl md:text-6xl text-maroon-deep mb-6 section-title opacity-0 text-glow-maroon">RSVP</h2>
+                    <svg viewBox="0 0 200 24" class="w-40 h-6 mx-auto opacity-60" style="filter: drop-shadow(0 0 4px rgba(138,57,59,0.15));">
+                        <line x1="10" y1="12" x2="80" y2="12" stroke="#8A393B" stroke-width="0.5"/>
+                        <line x1="120" y1="12" x2="190" y2="12" stroke="#8A393B" stroke-width="0.5"/>
+                        <circle cx="100" cy="12" r="4" fill="none" stroke="#8A393B" stroke-width="0.8"/>
+                        <circle cx="100" cy="12" r="1.5" fill="#8A393B"/>
+                        <ellipse cx="88" cy="10" rx="6" ry="3" fill="#5C2728" opacity="0.3" transform="rotate(-20 88 10)"/>
+                        <ellipse cx="112" cy="10" rx="6" ry="3" fill="#5C2728" opacity="0.3" transform="rotate(20 112 10)"/>
+                    </svg>
+                </div>
+
+                <div class="max-w-lg mx-auto rsvp-container opacity-0 transform translate-y-10">
+                    <div class="rounded-3xl p-8 md:p-12 relative overflow-hidden border border-maroon/15" style="background: rgba(92,39,40,0.06); box-shadow: 0 8px 40px rgba(138,57,59,0.06), inset 0 0 40px rgba(255,255,255,0.12);">
+                        <!-- Corner ornaments -->
+                        <div class="absolute top-4 left-4 w-12 h-12 border-t border-l border-maroon/20 rounded-tl-xl" style="filter: drop-shadow(0 0 3px rgba(138,57,59,0.1));"></div>
+                        <div class="absolute top-4 right-4 w-12 h-12 border-t border-r border-maroon/20 rounded-tr-xl" style="filter: drop-shadow(0 0 3px rgba(138,57,59,0.1));"></div>
+                        <div class="absolute bottom-4 left-4 w-12 h-12 border-b border-l border-maroon/20 rounded-bl-xl" style="filter: drop-shadow(0 0 3px rgba(138,57,59,0.1));"></div>
+                        <div class="absolute bottom-4 right-4 w-12 h-12 border-b border-r border-maroon/20 rounded-br-xl" style="filter: drop-shadow(0 0 3px rgba(138,57,59,0.1));"></div>
+
+                        <div class="text-center mb-10">
+                            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full border border-maroon/20 mb-4" style="background: rgba(138,57,59,0.08); box-shadow: 0 0 20px rgba(138,57,59,0.1);">
+                                <i class="fas fa-envelope-open-text text-maroon-deep text-xl glow-maroon"></i>
+                            </div>
+                            <h3 class="font-serif text-3xl text-maroon-deep mb-2 text-glow-maroon">Tamilarasan Weds Navina</h3>
+                            <p class="font-elegant text-maroon-dark/50 text-sm">Please confirm your presence by September 20th</p>
+                        </div>
+
+                        <form id="rsvpForm" action="https://formsubmit.co/pargunanpargunan2000@gmail.com" method="POST" class="space-y-5">
+                            <input type="hidden" name="_subject" value="Wedding RSVP - Guest Information">
+                            <input type="hidden" name="_cc" value="tamilarasanmech14@gmail.com">
+                            <input type="hidden" name="_template" value="box">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_autoresponse" value="Thank you for your RSVP! We will reach you soon or you can directly call us at 9600838651">
+
+                            <div>
+                                <label class="block text-maroon-deep text-xs uppercase tracking-[0.2em] mb-2 font-sans font-bold">Full Name</label>
+                                <input type="text" name="Name"
+                                    class="form-input w-full text-maroon-deep px-4 py-3 rounded-xl focus:outline-none placeholder-maroon/25" style="background: rgba(255,255,255,0.35); border-color: rgba(138,57,59,0.15);"
+                                    placeholder="Enter your name" required>
+                            </div>
+
+                            <div>
+                                <label class="block text-maroon-deep text-xs uppercase tracking-[0.2em] mb-2 font-sans font-bold">Place / City</label>
+                                <input type="text" name="Place"
+                                    class="form-input w-full text-maroon-deep px-4 py-3 rounded-xl focus:outline-none placeholder-maroon/25" style="background: rgba(255,255,255,0.35); border-color: rgba(138,57,59,0.15);"
+                                    placeholder="Enter your city" required>
+                            </div>
+
+                            <div>
+                                <label class="block text-maroon-deep text-xs uppercase tracking-[0.2em] mb-2 font-sans font-bold">Phone Number <span class="text-maroon/30 font-normal">(Optional)</span></label>
+                                <input type="tel" name="Phone"
+                                    class="form-input w-full text-maroon-deep px-4 py-3 rounded-xl focus:outline-none placeholder-maroon/25" style="background: rgba(255,255,255,0.35); border-color: rgba(138,57,59,0.15);"
+                                    placeholder="Enter your phone number">
+                            </div>
+
+                            <div>
+                                <label class="block text-maroon-deep text-xs uppercase tracking-[0.2em] mb-2 font-sans font-bold">Message <span class="text-maroon/30 font-normal">(Optional)</span></label>
+                                <textarea name="Message" rows="3"
+                                    class="form-input w-full text-maroon-deep px-4 py-3 rounded-xl focus:outline-none placeholder-maroon/25 resize-none" style="background: rgba(255,255,255,0.35); border-color: rgba(138,57,59,0.15);"
+                                    placeholder="Any special requests or wishes"></textarea>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full bg-gradient-to-r from-maroon-deep via-maroon to-maroon-deep text-ivory font-bold font-serif py-4 rounded-xl hover:shadow-[0_4px_30px_rgba(138,57,59,0.35),0_0_60px_rgba(138,57,59,0.12)] transition-all duration-500 hover:scale-[1.02] active:scale-[0.98] text-lg tracking-wider mt-4" style="box-shadow: 0 4px 20px rgba(138,57,59,0.2);">
+                                SEND CONFIRMATION
+                            </button>
+
+                            <div class="mt-8 text-center pt-6 border-t border-maroon/12">
+                                <p class="font-elegant text-maroon-dark/40 text-sm mb-3">For any queries, reach us at</p>
+                                <a href="tel:+919600838651"
+                                    class="inline-flex items-center gap-3 border border-maroon/20 px-6 py-3 rounded-full text-maroon-deep hover:bg-maroon/10 transition-all duration-300" style="background: rgba(138,57,59,0.05);">
+                                    <i class="fas fa-phone text-maroon text-sm"></i>
+                                    <span class="font-sans font-bold tracking-wider">9600838651</span>
+                                </a>
+                            </div>
+                        </form>
+
+                        <!-- Success Message -->
+                        <div id="rsvpSuccess" class="hidden text-center py-10">
+                            <div class="w-20 h-20 rounded-full bg-olive/15 border-2 border-olive flex items-center justify-center mx-auto mb-6 scale-0 success-icon">
+                                <i class="fas fa-check text-olive text-3xl"></i>
+                            </div>
+                            <h3 class="font-serif text-3xl text-maroon-deep mb-2">Thank You!</h3>
+                            <p class="font-elegant text-maroon-dark/50 mb-6">Your response has been recorded.</p>
+                            <p class="font-sans text-maroon-dark/40 text-sm mb-3">We'll reach out to you soon, or call us at</p>
+                            <a href="tel:+919600838651" class="text-maroon-deep text-xl font-bold hover:text-maroon-dark transition-colors">9600838651</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer — Deep Maroon -->
+        <footer class="relative py-16" style="background: linear-gradient(180deg, #3D1C1D 0%, #4A2223 50%, #3D1C1D 100%); box-shadow: inset 0 2px 40px rgba(236,168,9,0.06);">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(236,168,9,0.04)_0%,transparent_50%)]"></div>
+            <div class="container mx-auto px-4 relative z-10 text-center">
+                <div class="mb-6">
+                    <h2 class="font-script text-5xl md:text-6xl text-golden mb-3" style="text-shadow: 0 0 25px rgba(236,168,9,0.35), 0 0 60px rgba(236,168,9,0.1);">Tamilarasan & Navina</h2>
+                    <p class="font-elegant text-beige/50 text-lg italic">September 20, 2026</p>
+                </div>
+                <div class="w-16 h-px bg-gradient-to-r from-transparent via-golden/30 to-transparent mx-auto mb-6"></div>
+                <p class="font-sans text-golden/25 text-xs uppercase tracking-[0.3em]">#TamilarasanNavinaWedding</p>
+                <p class="font-sans text-golden/15 text-xs mt-6">Made with love for the special day</p>
+
+                <div class="mt-10 pt-6 border-t border-golden/10">
+                    <p class="font-elegant text-beige/30 text-sm">Want a stunning wedding website like this for your special event?</p>
+                    <p class="font-sans text-beige/40 text-sm mt-2">
+                        Reach out to <span class="text-golden/50 font-semibold">Pargunan</span> &mdash;
+                        <a href="tel:+916379298097" class="text-golden/50 hover:text-golden transition-colors font-semibold">6379298097</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                gsap.to(window, { scrollTo: a.getAttribute('href'), duration: 1, ease: "power2.inOut" });
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (mobileMenu.classList.contains('open')) {
+                    mobileMenu.classList.remove('open');
+                    document.getElementById('menuIcon').classList.replace('fa-times', 'fa-bars');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            menu.classList.toggle('open');
+            if (menu.classList.contains('open')) {
+                icon.classList.replace('fa-bars', 'fa-times');
+            } else {
+                icon.classList.replace('fa-times', 'fa-bars');
+            }
+        });
+
+        // --- PARTICLE SYSTEMS ---
+        function createParticles() {
+            const container = document.body;
+            for (let i = 0; i < 30; i++) {
+                const p = document.createElement('div');
+                p.classList.add('particle');
+                const size = Math.random() * 3 + 1;
+                p.style.width = `${size}px`;
+                p.style.height = `${size}px`;
+                const colors = ['#B09364', '#E0C9B5', '#C8A8A3', '#ECA809'];
+                p.style.background = colors[Math.floor(Math.random() * colors.length)];
+                p.style.borderRadius = '50%';
+                p.style.left = `${Math.random() * 100}vw`;
+                p.style.top = `${Math.random() * 100}vh`;
+                container.appendChild(p);
+                gsap.to(p, {
+                    y: -60 - Math.random() * 120,
+                    x: Math.random() * 30 - 15,
+                    opacity: Math.random() * 0.3 + 0.05,
+                    duration: Math.random() * 6 + 6,
+                    repeat: -1,
+                    yoyo: true,
+                    ease: "sine.inOut",
+                    delay: Math.random() * 6
+                });
+            }
+        }
+
+        function createPetals() {
+            const container = document.body;
+            const petalColors = [
+                { fill: '#F7DBD2', opacity: 0.5 },
+                { fill: '#E0C9B5', opacity: 0.4 },
+                { fill: '#FAEEE8', opacity: 0.5 },
+                { fill: '#C8A8A3', opacity: 0.35 },
+            ];
+            for (let i = 0; i < 12; i++) {
+                const petal = document.createElement('div');
+                petal.classList.add('petal');
+                const color = petalColors[Math.floor(Math.random() * petalColors.length)];
+                const svg = `<svg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'><path d='M15,0C5,10,0,20,15,30C30,20,25,10,15,0z' fill='${color.fill}' opacity='${color.opacity}'/></svg>`;
+                petal.style.backgroundImage = `url("data:image/svg+xml;base64,${btoa(svg)}")`;
+                const size = Math.random() * 16 + 8;
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size}px`;
+                petal.style.left = `${Math.random() * 100}vw`;
+                petal.style.top = `-50px`;
+                container.appendChild(petal);
+                gsap.to(petal, {
+                    y: '110vh',
+                    x: `+=${Math.random() * 60 - 30}`,
+                    rotation: Math.random() * 360 + 360,
+                    duration: Math.random() * 6 + 10,
+                    repeat: -1,
+                    ease: "none",
+                    delay: Math.random() * 8
+                });
+            }
+        }
+
+        function createFireworks() {
+            setInterval(() => {
+                const cracker = document.createElement('div');
+                cracker.style.cssText = `position:fixed;left:${Math.random()*100}vw;top:${Math.random()*60+10}vh;pointer-events:none;z-index:50;`;
+                document.body.appendChild(cracker);
+                const colors = ['#B09364','#E0C9B5','#ECA809','#F7DBD2','#C8A8A3','#8A393B','#528F34'];
+                for (let i = 0; i < 14; i++) {
+                    const dot = document.createElement('div');
+                    dot.style.cssText = `position:absolute;width:2.5px;height:2.5px;border-radius:50%;background:${colors[Math.floor(Math.random()*colors.length)]};`;
+                    cracker.appendChild(dot);
+                    const angle = (i / 14) * Math.PI * 2;
+                    const dist = 35 + Math.random() * 50;
+                    gsap.to(dot, {
+                        x: Math.cos(angle) * dist,
+                        y: Math.sin(angle) * dist + 15,
+                        opacity: 0,
+                        duration: 1.2 + Math.random() * 0.5,
+                        ease: "power3.out",
+                        onComplete: () => cracker.remove()
+                    });
+                }
+            }, 3500);
+        }
+
+        // --- ENTRY SEQUENCE ---
+        const openBtn = document.getElementById('openBtn');
+        const curtainLayer = document.getElementById('curtainLayer');
+        const mainContent = document.getElementById('mainContent');
+        const audio = document.getElementById('weddingMusic');
+        const musicControl = document.getElementById('musicControl');
+        const musicIcon = document.getElementById('musicIcon');
+        const mainNav = document.getElementById('mainNav');
+        let isPlaying = false;
+
+        gsap.from(".entry-text", {
+            y: 25,
+            opacity: 0,
+            stagger: 0.15,
+            duration: 1.2,
+            ease: "power3.out",
+            delay: 0.3
+        });
+
+        openBtn.addEventListener('click', () => {
+            audio.volume = 0.4;
+            audio.play().then(() => {
+                isPlaying = true;
+                musicControl.classList.remove('hidden');
+            }).catch(e => console.log("Audio play failed", e));
+
+            const tl = gsap.timeline({ onComplete: () => { curtainLayer.style.display = 'none'; } });
+
+            tl.to("#entryContent", { opacity: 0, scale: 0.95, duration: 0.6, ease: "power2.in" });
+            tl.to("#centerGlow", { opacity: 1, scale: 2, duration: 1.5 }, "<0.2");
+
+            tl.to(".curtain-left", { xPercent: -105, skewX: 3, duration: 2, ease: "power3.inOut" }, "open");
+            tl.to(".curtain-right", { xPercent: 105, skewX: -3, duration: 2, ease: "power3.inOut" }, "open");
+
+            tl.to("#mainContent", { opacity: 1, filter: "blur(0px)", duration: 2, ease: "power2.out" }, "-=1.5");
+
+            tl.to("#mainNav", { y: 0, opacity: 1, duration: 0.8, ease: "power2.out" }, "-=0.5");
+
+            createParticles();
+            createPetals();
+            createFireworks();
+            runHeroAnimations();
+        });
+
+        musicControl.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+                musicIcon.classList.replace('fa-music', 'fa-volume-xmark');
+            } else {
+                audio.play();
+                musicIcon.classList.replace('fa-volume-xmark', 'fa-music');
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // --- NAV SCROLL BEHAVIOR ---
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const navBg = document.querySelector('.nav-bar-bg');
+            const currentScroll = window.scrollY;
+            if (currentScroll > 100) {
+                navBg.style.background = 'rgba(250, 244, 234, 0.95)';
+                navBg.style.boxShadow = '0 2px 20px rgba(176, 147, 100, 0.08)';
+            } else {
+                navBg.style.background = 'rgba(250, 244, 234, 0.9)';
+                navBg.style.boxShadow = 'none';
+            }
+            lastScroll = currentScroll;
+        });
+
+        // --- SCROLL ANIMATIONS ---
+        function runHeroAnimations() {
+            gsap.to(".gsap-hero-reveal", {
+                y: 0,
+                opacity: 1,
+                stagger: 0.15,
+                duration: 1.2,
+                ease: "power3.out",
+                delay: 0.3
+            });
+        }
+
+        gsap.utils.toArray(".section-title").forEach(title => {
+            gsap.to(title, {
+                scrollTrigger: { trigger: title, start: "top 85%" },
+                opacity: 1, y: 0, duration: 1.2, ease: "power3.out"
+            });
+        });
+
+        gsap.utils.toArray(".section-subtitle").forEach(sub => {
+            gsap.to(sub, {
+                scrollTrigger: { trigger: sub, start: "top 85%" },
+                opacity: 1, y: 0, duration: 1, ease: "power3.out"
+            });
+        });
+
+        gsap.utils.toArray(".couple-card").forEach((card, i) => {
+            gsap.to(card, {
+                scrollTrigger: { trigger: card, start: "top 80%" },
+                x: 0, opacity: 1, duration: 1.5, delay: i * 0.2, ease: "power3.out"
+            });
+        });
+
+        gsap.to(".couple-heart", {
+            scrollTrigger: { trigger: ".couple-heart", start: "top 80%" },
+            opacity: 1, scale: 1, duration: 1, delay: 0.5, ease: "back.out(1.7)"
+        });
+
+        ScrollTrigger.create({
+            trigger: "#storyTypewriter",
+            start: "top 85%",
+            onEnter: () => {
+                gsap.to("#storyTypewriter", {
+                    text: {
+                        value: "Love is not just about finding the right person, but creating the right relationship. It's not about how much love you have in the beginning but how much love you build until the end. We are starting our forever, and we want you to be part of it."
+                    },
+                    duration: 5,
+                    ease: "none"
+                });
+            }
+        });
+
+        gsap.to(".event-card", {
+            scrollTrigger: { trigger: ".event-card", start: "top 80%" },
+            y: 0, opacity: 1, duration: 1.2, ease: "power3.out"
+        });
+
+        gsap.utils.toArray(".venue-card").forEach((card, i) => {
+            gsap.to(card, {
+                scrollTrigger: { trigger: card, start: "top 85%" },
+                y: 0, opacity: 1, duration: 1, delay: i * 0.15, ease: "power3.out"
+            });
+        });
+
+        gsap.to(".rsvp-container", {
+            scrollTrigger: { trigger: ".rsvp-container", start: "top 80%" },
+            y: 0, opacity: 1, duration: 1.2, ease: "power3.out"
+        });
+
+        // --- COUNTDOWN ---
+        function updateCountdown() {
+            const target = new Date('2026-09-20T11:30:00').getTime();
+            const now = new Date().getTime();
+            const d = target - now;
+            const abs = Math.abs(d);
+            const sign = d < 0 ? '-' : '';
+            const days = Math.floor(abs / 86400000);
+            const hours = Math.floor((abs % 86400000) / 3600000);
+            const minutes = Math.floor((abs % 3600000) / 60000);
+            const seconds = Math.floor((abs % 60000) / 1000);
+            document.getElementById('days').textContent = sign + days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = sign + hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = sign + minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = sign + seconds.toString().padStart(2, '0');
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
